@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <sys/time.h>
+#include <ctime>
 #include "gettime.h"
 
 #ifdef __MACH__
@@ -36,7 +36,7 @@ void GetRealTime(struct timespec* clk)
   clk->tv_sec = mts.tv_sec;
   clk->tv_nsec = mts.tv_nsec;
 #else
-  clock_gettime(CLOCK_REALTIME, &clk);
+  clock_gettime(CLOCK_REALTIME, clk);
 #endif
 }
 
@@ -52,6 +52,6 @@ void GetMonotonicTime(struct timespec* clk)
   clk->tv_sec = mts.tv_sec;
   clk->tv_nsec = mts.tv_nsec;
 #else
-  clock_gettime(CLOCK_MONOTONIC, &clk);
+  clock_gettime(CLOCK_MONOTONIC, clk);
 #endif
 }

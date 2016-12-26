@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdlib.h>
 #include "fssm.h"
 #include "rnd.h"
+#include "ann_exception.h"
 #include "gettime.h"
 
 using namespace std;
 
 int fssm::SparseActiv()
 {
-  cout << "Error: SparseActiv not implemented for fssm\n";
-  exit(0);
+  throw ann_exception("Error: SparseActiv not implemented for fssm\n");
 
   return 0;
 }
@@ -313,8 +313,7 @@ int fssm::ActivWnn()
 
 int fssm::WTA()
 {
-  cout << "Error: WTA not implemented for fssm\n";
-  exit(0);
+  throw ann_exception("Error: WTA not implemented for fssm\n");
   
   return 0;
 }
@@ -326,10 +325,9 @@ int fssm::NewWnn()
   if (!NullIn()) {
     imax = NewWnnNum;
     NewWnnNum++;
-    if (NewWnnNum>NN()) {
-      cout << "Error: NewWnn overflow\n";
-      exit(0);
-    }
+    if (NewWnnNum>NN())
+      throw ann_exception("NewWnn overflow\n");
+
     Nr[imax]->O = 1;
     Nr[imax]->Used = 1;
     NHigh = 1;
@@ -342,9 +340,9 @@ int fssm::NewWnn()
 
 int fssm::NewWTA()
 {
-  cout << "Error: NewWTA not implemented for fssm\n";
-  exit(0);
-
+  throw ann_exception("Error: NewWTA not implemented for fssm\n");
+ 
+  return 0;
 }
 
 int fssm::NumWnn()

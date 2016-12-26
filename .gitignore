@@ -30,3 +30,10 @@ libtool
 .deps
 *.gz
 *.tgz
+/.autotools
+/.cproject
+/.project
+/.settings/
+doxygen
+.DS_Store
+
